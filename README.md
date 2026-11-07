@@ -1,16 +1,40 @@
-# React + Vite
+# Sleep Architect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plan bedtimes and wake times around 90-minute sleep cycles, then track how rested you feel over time.
 
-Currently, two official plugins are available:
+Sleep Architect is a lightweight React app for picking a sleep or wake target, seeing the next few cycle-aligned times, and logging a short morning check-in.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Wake up at / Sleep at** — calculate bedtime from a wake time, or wake time from a bedtime
+- **90-minute cycles** — shows options for 4, 5, and 6 cycles (6h, 7.5h, and 9h)
+- **Fall-asleep buffer** — add 0–60 minutes so the schedule includes time to actually fall asleep
+- **Morning check-in** — tap I'm Awake, rate how hard it was to get up, then rate energy a few minutes later
+- **Efficiency chart** — plots your combined rest score over time (saved in the browser)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How it works
 
-## Expanding the ESLint configuration
+Sleep is planned in 90-minute cycles. Pick a target time and a buffer, and the app subtracts or adds 4–6 cycles plus that buffer.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+After you wake up, it asks for wake difficulty (1–10) and, about 10 seconds later, energy level (1–10). Those scores are combined into a rest-efficiency number and stored in `localStorage` so the chart persists on that device.
+
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the local URL Vite prints (usually `http://localhost:5173`).
+
+```bash
+npm run build    # production build
+npm run preview  # preview the production build
+```
+
+## Tech stack
+
+- React 19
+- Vite
+- Recharts
+- Lucide icons
